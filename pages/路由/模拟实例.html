@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    需求：当前有多个区域需要记性统计表查询，现在需要做一个总的路由页面跳转机制
+    1、已知跳转的路径只有最后一部分不同
+    2、技术方案确定使用动态路由机制处理多个请求
+-->
+<div id="app">
+    <router-link :to="{name: 'user', params: {area: 'longhua'}}">龙华区</router-link>
+    <router-link :to="{name: 'user', params: {area: 'baoan'}}">宝安区</router-link>
+    <router-link :to="{name: 'user', params: {area: 'zhuhai'}}">珠海</router-link>
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    const user = {
+        props:['area'],
+        template: `<h1>信息来源：{{area}}</h1>`
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        routes: [
+            {
+                name: 'user',
+                path: '/user/:area',
+                component: user,
+                props: true
+            },
+            {
+                path: '/register',
+                component: register
+            }
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        router
+    });
+</script>
+</body>
+</html>

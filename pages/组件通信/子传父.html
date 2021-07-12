@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="temp">
+    <div>
+        <button :key="index" v-for="(item,index) in stars" @click="selected(item,index)">
+            {{item}}
+        </button>
+    </div>
+</template>
+
+<div id="app">
+    <!-- 父组件需要监听子组件所定义的时间名：@符号就是v-on的缩写，需要注意v-on和v-bind所绑定的事件或者属性都不能用驼峰命名
+        否则可能导致无法找到相关的属性或事件。
+
+        注意：
+        1、【@selected-star】中【@】所修饰的【selected-star】实际上就是子组件【selected】事件中我们自定义的事件名称，监听
+        子组件中的【selected-star】事件，也就是它 =>【this.$emit('selected-star',item);】
+        2、【change】：用来对子组件【selected-star】事件发生时的具体操作
+        3、虽然 【this.$emit('selected-star',item);】中携带了数据，而我们父组件的【change】事件中只有一个事件名，却没有
+        见到参数列表，即使如此，参数【item】也会被【Event】监听事件传入【change】事件中
+        即：@selected-star="change == @selected-star="change(item)"
+     -->
+    <son @selected-star="change" :stars="stars"></son>
+    <div>{{name}}</div>
+</div>
+</body>
+<script type="text/javascript">
+    const son = {
+        props: {
+            stars: {
+                type: [Array, String],
+                required: true
+            }
+        },
+        template: "#temp",
+        methods: {
+            /* 定义事件，向父组件传递数据 */
+            selected(item, index) {
+                /* $emit原意为发射，通知父组件，子组件发生了变化：第一个参数为触发的事件名称，第二个参数为要向父组件传递的数据 */
+                this.$emit('selected-star', item, index);
+            }
+        }
+    };
+
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            stars: ['史泰龙', '施瓦辛格', '汤姆克鲁斯', '肯尼迪'],
+            name: {
+                type: String,
+                default: ''
+            }
+        },
+        components: {
+            son: son
+        },
+        methods: {
+            change(item, index) {
+                console.log(index);
+                this.name = item;
+            }
+        }
+    });
+</script>
+
+</html>

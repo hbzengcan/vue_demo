@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div>水果列表</div>
+    <!-- 基本循环 -->
+    <ul>
+        <li v-for="item in fruits">{{item}}</li>
+    </ul>
+
+    <!-- 携带索引 -->
+    <ul>
+        <li v-for="(item,index) in fruits">{{index}} -- {{item}}</li>
+    </ul>
+
+    <!-- 通过制定key提高vue的遍历性能-->
+    <ul>
+        <!-- 由于index也是唯一的，所以index也可以替换掉vue：
+            <li :key="index" v-for="(item,index) in fruits">{{index}} -- {{item}}</li>
+         -->
+        <li :key="item.id" v-for="(item,index) in fruits">{{index}} -- {{item}}</li>
+    </ul>
+
+    <!-- 复杂对象：对象中有对象 -->
+    <ul>
+        <li v-for="(item,index) in myFruits">
+            <span>{{index}}</span>
+            <span>{{item.ename}}</span>
+            <span>{{item.cname}}</span>
+        </li>
+    </ul>
+
+
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            fruits: ['apple','banana','orange'],
+            myFruits: [
+                {
+                    ename:'apple',
+                    cname:'苹果'
+                },
+                {
+                    ename:'banana',
+                    cname:'香蕉'
+                },
+                {
+                    ename:'orange',
+                    cname:'橘子'
+                },
+            ]
+        }
+    })
+</script>
+</body>
+</html>

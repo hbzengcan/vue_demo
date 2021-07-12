@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="temp">
+    <div>
+        <h1>标题</h1>
+        <!--
+            1、<slot>就是插槽标签
+            2、<slot><button></button></slot>中的<button></button>就是插槽的默认值
+            3、子组件中的值就是插槽的替换值：<son><div>插槽的值</div></son>，<div>插槽的值</div>会将子组件
+            中<slot><button></button></slot>中的<button></button>替换成<div>插槽的值</div>
+            4、<slot>中可以同时存在多个标签，可以不包含根元素
+        -->
+        <slot><button>默认按钮</button></slot>
+    </div>
+</template>
+<div id="app">
+    <son><div>自定义插槽值</div></son>
+    <son></son>
+</div>
+</body>
+<script type="text/javascript">
+    const son = {
+        template:'#temp'
+    };
+
+    const vm = new Vue({
+        el: '#app',
+        components:{
+            son: son
+        }
+    });
+</script>
+
+</html>

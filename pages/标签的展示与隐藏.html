@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- v-show原理：控制元素是否显示出来，实际上就是根据参数的条件来修改display的值，参数类型必须是Boolean
+     v-show 与 v-if分支的区别：
+     1、v-show 所修饰的元素是已经被渲染到页面，只是有没有显示而已
+     2、v-if 所所修饰的元素如果不满足条件，是不会被渲染到页面的，元素都不会存在
+     -->
+    <div v-show="flag">{{msg}}</div>
+    <button v-on:click="change">切换</button>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '我出来了',
+            flag: true
+        },
+        methods:{
+            change:function(){
+                console.log(this.flag);
+                this.flag = !this.flag;
+            }
+        }
+    })
+</script>
+</body>
+</html>

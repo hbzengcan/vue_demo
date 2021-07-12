@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- <路由-link> 标签会被解析成 <a>标签，to 属性会被解析成href，to 属性的值会被渲染为【#】开头的一个hash地址-->
+    <router-link to="/user">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <!-- 路由站位符：通过路由获取到的组件信息会被替换到这里 -->
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    /* 实例化父级组件 */
+    const user = {
+        template: `<h1>user组件</h1>`
+    };
+    const register = {
+        template: `<div>
+                        <h1>register组件</h1>
+                        <router-link to="/register/tab1">tab1</router-link>
+                        <router-link to="/register/tab2">tab2</router-link>
+                        <router-view></router-view>
+                    </div>`
+    };
+
+    /* 实例化子级组件 */
+    const tab1 = {
+        template: `<h1>tab1组件</h1>`
+    };
+    const tab2 = {
+        template: `<h1>tab2组件</h1>`
+    }
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        routes: [
+            /* 使用路由重定向完成默认页面展示，如果进入默认页面，则重定向至【/user】路径 */
+            {
+                path: '/',
+                redirect: '/user'
+            },
+            {
+                path: '/user',
+                component: user
+            },
+            {
+                path: '/register',
+                component: register,
+                /* 用过【children】属性添加子级路由规则*/
+                children:[
+                    /* 添加子级组件路由规则 */
+                    {path: '/register/tab1', component: tab1},
+                    {path: '/register/tab2', component: tab2}
+                ]
+            }
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        /*
+        * 将路由挂载到根实例上，es 7 语法新规定，如果属性名与属性值一致，可直接简写成下面这样
+        * 路由: 路由
+        *  */
+        router
+    });
+</script>
+</body>
+</html>

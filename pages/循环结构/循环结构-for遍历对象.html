@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div>个人讯息</div>
+    <!-- 使用 v-for 遍历对象时，括号中的参数有三个，第一个是属性值，第二个是属性名，第三个是索引，顺序是固定的，但是
+        参数的名称可以自定义，如下也是可以遍历出来的：
+        <div v-for="(v,k,i) in person">{{i}}--{{k}}--{{v}}</div>
+     -->
+    <div v-for="(value,key,index) in person">{{index}}--{{key}}--{{value}}</div>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            person:{id: 1,
+                name: 'nick',
+                age: 20
+            }
+        }
+    })
+</script>
+</body>
+</html>

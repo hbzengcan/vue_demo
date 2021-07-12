@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active{
+        color: red
+    }
+    .large{
+        font-size: 100px
+    }
+</style>
+<body>
+    <div id = "app">
+        <div v-html = "message" :class="{ active: isActive, large: isLarge }"></div> 
+        <div v-if = "score > 90">优秀</div> 
+        <div v-else-if = "score < 90 && score > 80">中等</div> 
+        <div v-else>下等</div> 
+        <input type = "text" v-model = "message" placeholder="编辑信息"/>
+        <button @click = "handler">切换信息</button> 
+        <button @click = "changeActive">切换信息字体颜色</button> 
+        <button @click = "changeFontSize">切换信息字体大小</button> 
+    </div>
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            message: '<h1>皮皮方</h1>',
+            score: 70,
+            isActive: false,
+            isLarge: false
+        },
+        methods: {
+            handler: function(){
+                if (this.message == '<h1>方经理NB</h1>'){
+                    this.message = '<h1>皮皮方</h1>'
+                    return;
+                }
+                this.message = '<h1>方经理NB</h1>'
+            },
+            changeActive: function(){
+                this.isActive = !this.isActive
+            },
+            changeFontSize: function(){
+                this.isLarge = !this.isLarge
+            }
+        }
+    })
+</script>
+
+</html>

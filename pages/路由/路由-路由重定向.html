@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- <路由-link> 标签会被解析成 <a>标签，to 属性会被解析成href，to 属性的值会被渲染为【#】开头的一个hash地址
+    tag 属性：将<router-link>渲染出来的<a>标签转换成其他标签，如下，转换成了<button>标签
+    replace 属性：不需要指定任何值，跳转页面是不会留下历史记录，用户无法通过浏览的前进后退按钮进行前进后退操作
+    -->
+    <router-link to="/user" tag = "button" replace>user</router-link>
+    <router-link to="/register" tag = "button" replace>register</router-link>
+
+    <!-- 路由站位符：通过路由获取到的组件信息会被替换到这里 -->
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    /* 实例化两个组件 */
+    const user = {
+        template: `<h1>user组件</h1>`
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        routes: [
+            /* 使用路由重定向完成默认页面展示，如果进入默认页面，则重定向至【/user】路径 */
+            {
+                path:'/',
+                redirect:'/user'
+            },
+            {
+                path: '/user',
+                component: user
+            },
+            {
+                path: '/register',
+                component: register
+            }
+        ],
+        mode: 'history' // 默认是用hash模式，前端url变化的时候回有#号，切换成history模式就变成了restful风格的请求url
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        /*
+        * 将路由挂载到根实例上，es 7 语法新规定，如果属性名与属性值一致，可直接简写成下面这样
+        * 路由: 路由
+        *  */
+        router
+    });
+</script>
+</body>
+</html>

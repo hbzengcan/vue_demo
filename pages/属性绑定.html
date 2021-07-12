@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 属性绑定简写：:属性名 -->
+    <a v-bind:href="url">百度一下</a>
+    <a :href="url">百度一下</a>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            url: 'https://www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

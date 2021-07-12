@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- <路由-link> 标签会被解析成 <a>标签，to 属性会被解析成href，to 属性的值会被渲染为【#】开头的一个hash地址-->
+    <router-link to="/user">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <!-- 路由站位符：通过路由获取到的组件信息会被替换到这里
+        也就是说组件【user】和组件【register】会替换<路由-view>标签
+     -->
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    /* 实例化两个组件 */
+    const user = {
+        template: `<h1>user组件</h1>`
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        /* 路由规则数组：保存路由规则 */
+        routes: [
+            /*
+            * 每个路由规则就是一个对象，至少包含【path】和【component】两个属性
+            * path：路由地址
+            * component：路由所要展示的组件对象，不可用字符串，只能用对象名
+            * */
+            {
+                path: '/user',
+                component: user
+            },
+            {
+                path: '/register',
+                component: register
+            }
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        /*
+        * 将路由挂载到根实例上，es 7 语法新规定，如果属性名与属性值一致，可直接简写成下面这样
+        * 路由: 路由
+        *  */
+        router
+    });
+</script>
+</body>
+</html>

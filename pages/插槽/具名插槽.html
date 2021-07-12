@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="temp">
+    <div>
+        <h1>标题</h1>
+        <!-- name属性用来指定插槽的名称，没有名称的插槽是默认插槽 -->
+        <slot name="left">左边</slot>
+        <slot name="center">中间</slot>
+        <slot name="right">右边</slot>
+        <slot>默认插槽</slot>
+    </div>
+</template>
+<div id="app">
+    <son>
+        <!-- slot属性用来指定对应的插槽名称，如果没有指定插槽名称则替换到默认插槽中，默认插槽也就是没有定义名字的插槽 -->
+        <div slot="left">left</div>
+        <div slot="center">center</div>
+        <div slot="right">right</div>
+    </son>
+</div>
+</body>
+<script type="text/javascript">
+    const son = {
+        template:'#temp'
+    };
+
+    const vm = new Vue({
+        el: '#app',
+        components:{
+            son: son
+        }
+    });
+</script>
+
+</html>

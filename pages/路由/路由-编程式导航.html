@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 使用命名路由进行路由跳转，【to】前面前面一定要【:】，这样vue才知道是通过动态属性进行绑定的 -->
+    <router-link :to="{name: 'user', params: {id: 123}}">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    const user = {
+        props: ['id'],
+        template: `<div>
+                <h1>user组件 {{id}}</h1>
+                <button @click="goRegister">注册</button>
+                <button @click="goForward">前进</button>
+                <button @click="goBack">后退</button>
+            </div> `,
+        methods: {
+            /* 跳转路径函数 */
+            goRegister: function () {
+                /* 下面的代码相当于：<router-link to="/register">register</router-link>，只不是另一种表现形式
+                * $router.push() 中 push函数的参数是一个跳转路径
+                * */
+                /* 使用路由path进行跳转 */
+                this.$router.push('/register');
+                this.$router.push({path: '/register'});
+
+                /* 使用路由名称进行跳转 */
+                this.$router.push({name: 'register'});
+
+                /* 携带路由参数 */
+                this.$router.push({name: 'register',params:{id: 1}});
+
+                /* 携带查询查询参数，查询路径会变成：/register?id=1 */
+                this.$router.push({name: 'register',query:{id: 1}});
+            },
+            /* 前进函数 */
+            goForward: function () {
+                /* go方法中的值为正数，则为前进 */
+                this.$router.go(1);
+            },
+            /* 后退函数 */
+            goBack: function () {
+                /* go方法中的值为负数，则为后退 */
+                this.$router.go(-1);
+            }
+        }
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        routes: [
+            {
+                name: 'user',
+                path: '/user/:id',
+                component: user,
+                props: true
+            },
+            {
+                name: 'register',
+                path: '/register',
+                component: register
+            }
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        router
+    });
+</script>
+</body>
+</html>

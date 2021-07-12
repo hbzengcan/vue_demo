@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 事件绑定简写：@事件名，@click 是 v-on:click 的简写 -->
+    <div>{{num}}</div>
+    <button type="button" v-on:click="num++">累加1</button>
+    <button type="button" @click="num++">累加2</button>
+
+    <!-- 使用绑定函数的方法实现累加 -->
+    <!-- 【累加3】中直接使用函数名调用也可以实现函数的调用，但是没有办法传参，而【累加4】中带小括号的方式是可以进行传参的 -->
+    <button type="button" @click="handle">累加3</button>
+    <button type="button" @click="handle1(1,2)">累加4</button>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            num: 0,
+        },
+        methods: {
+            handle: function () {
+                /*
+                * 不可以直接使用num++，否则直接报错，因为找不到num的定义
+                * */
+                // 使用this指定num的来源，这样就不会报错了，通过对比this，发现this其实就是当前的vm对象，所以num是有值的，
+                console.log(this == vm);
+                this.num++;
+            },
+            handle1: function (s1, s2) {
+                console.log(s1, s2);
+            }
+        }
+    })
+</script>
+</body>
+</html>

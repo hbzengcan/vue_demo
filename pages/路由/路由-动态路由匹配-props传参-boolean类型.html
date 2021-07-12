@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <router-link to="/user/1">user</router-link>
+    <router-link to="/user/2">user</router-link>
+    <router-link to="/user/3">user</router-link>
+    <router-link to="/register">register</router-link>
+
+
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    const user = {
+        /* 使用【props】获取路由中的参数 */
+        props: ['id'],
+        template: `<h1>user组件，用户ID为：{{id}}</h1>`
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    const router = new VueRouter({
+        routes: [
+            /*
+            * 组件中新增【props】参数，指定为true，意为开启组件传参
+            * 【props】被设置为true后，$route.params将被设置为组件属性
+            */
+            {path: '/user/:id', component: user, props: true},
+            {path: '/register', component: register}
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        router,
+        components: {
+            user: user
+        }
+    });
+</script>
+</body>
+</html>

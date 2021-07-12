@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="son">
+    <div>
+        <h1>子组件</h1>
+        <button v-show="isShow">按钮</button>
+    </div>
+</template>
+
+<div id="app">
+    <!--
+        关于编译作用译：
+
+        总结：编译作用域只针对当前模板有效，即：父模板中的变量都是从父模板所获取的，子模板中的变量都是从子模板中所获取的
+
+        解释：父组件和子组件中同时存在属性【isShow】，当在父组件中为子组件指定【v-show="isShow"】时，【isShow】的是从
+        父组件取值还是从子组件取值？通过实际操作可以发现，【<son v-show="isShow"></son>】中的【isShow】属性的值是从父组件中
+        所获取的，所以组件的翻译作用于和当前的模板有关，因为子组件【<son>】存在于父组件【div】中，而父组件此时使用的是【app】
+        模板，因此属性【isShow】实际上是从【app】模板中的【data】中所获取的，而子组件中【<button v-show="isShow">按钮</button>】
+        的属性【isShow】则是从子组件中的模板【data】属性中所获取的
+    -->
+    <son v-show="isShow"></son>
+</div>
+</body>
+<script type="text/javascript">
+    const son = {
+        template: '#son',
+        data() {
+            return {
+                isShow: false
+            }
+        }
+    };
+
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            isShow: true
+        },
+        components: {
+            son: son
+        }
+    });
+</script>
+
+</html>

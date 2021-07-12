@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+</body>
+<script type="text/javascript">
+
+    /*
+    * 当vue实例中同时存在【el】属性和【template】属性时，vue在解析的时候，【el】的内容会被【template】的内容替换掉
+    * 即：<div id="app"></div> 这个标签会被替换成这样：
+    *       <div>
+                <h1>标题</h1>
+                <div style="color:red">内容</div>
+            </div>
+      好处：让主入口页面中的代码不用做任何修改，只是修改【template】中的数据而已
+    * */
+    const vm = new Vue({
+        el: '#app',
+        template: `
+            <div>
+                <h1>标题</h1>
+                <div style="color:red">内容</div>
+            </div>
+        `
+    });
+</script>
+
+</html>

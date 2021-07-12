@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a1b566e9-cf1c-46ec-a22f-16f368adc828" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1kYnCa9OAQ5bmBJuUh6iKkMJ8RF" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/vue模板" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web_strom_work_space\demo\pages\vue模板" />
+      <recent name="D:\web_strom_work_space\demo\pages\模块化" />
+      <recent name="D:\web_strom_work_space\demo\pages\组件通信" />
+      <recent name="D:\web_strom_work_space\demo\pages\路由" />
+      <recent name="D:\web_strom_work_space\demo\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\web_strom_work_space\demo\pages\组件" />
+      <recent name="D:\web_strom_work_space\demo\pages\循环结构" />
+      <recent name="D:\web_strom_work_space\demo\pages\vue模板" />
+      <recent name="D:\web_strom_work_space\demo\pages\插槽" />
+      <recent name="D:\web_strom_work_space\demo\pages\路由" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1b566e9-cf1c-46ec-a22f-16f368adc828" name="Default Changelist" comment="" />
+      <created>1605886265962</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605886265962</updated>
+      <workItem from="1605886269072" duration="296000" />
+      <workItem from="1605886591149" duration="3595000" />
+      <workItem from="1605945272579" duration="4276000" />
+      <workItem from="1605950336756" duration="4730000" />
+      <workItem from="1605966731568" duration="2158000" />
+      <workItem from="1606015860304" duration="23295000" />
+      <workItem from="1606061113149" duration="725000" />
+      <workItem from="1606062555338" duration="396000" />
+      <workItem from="1606063033689" duration="169000" />
+      <workItem from="1606557240057" duration="4355000" />
+      <workItem from="1606576364108" duration="12560000" />
+      <workItem from="1606654564945" duration="2226000" />
+      <workItem from="1617897976201" duration="108000" />
+      <workItem from="1617899546459" duration="110000" />
+      <workItem from="1617899830293" duration="1350000" />
+      <workItem from="1621083812024" duration="245000" />
+      <workItem from="1621086831249" duration="629000" />
+      <workItem from="1621099577259" duration="260000" />
+      <workItem from="1621136095579" duration="66000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

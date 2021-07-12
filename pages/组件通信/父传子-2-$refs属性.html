@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="t1">
+    <div>{{msg}}</div>
+</template>
+<div id="app">
+    <son :msg="msg"></son>
+    <son :msg="msg" ref="s1"></son>
+    <son :msg="msg"></son>
+    <button @click="selected">选择</button>
+</div>
+
+</body>
+<script type="text/javascript">
+    const son = {
+        props:{
+            msg:{
+              type: [Array,String],
+              required: true
+          }
+        },
+        template: "#t1",
+        methods: {
+        }
+    };
+    const father = new Vue({
+        el: '#app',
+        data: {
+            msg: '子组件'
+        },
+        components: {
+            son: son
+        },
+        methods:{
+            selected(){
+                console.log(this.$refs.s1.msg);
+            }
+        }
+    });
+</script>
+
+</html>

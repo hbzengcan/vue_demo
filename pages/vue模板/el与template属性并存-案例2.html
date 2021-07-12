@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="temp">
+    <div>
+        <h1>标题</h1>
+        <div style="color:red">内容</div>
+    </div>
+</template>
+<div id="app">
+</div>
+</body>
+<script type="text/javascript">
+
+    const vm = new Vue({
+        el: '#app',
+        template: '#temp'
+    });
+</script>
+
+</html>

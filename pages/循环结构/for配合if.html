@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div>for & if</div>
+    <!--
+        注意：v-if 相当于是在v-for遍历过程中，为每个元素上加了一层判断，只有满足if条件，该元素才会被渲染，否则直接不予处理
+     -->
+    <div v-if="item.price >= 20" :key="item.id" v-for="(item,index) in fruits">{{item.name}}--{{item.price}}</div>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            fruits: [
+                {
+                    name: 'apple',
+                    price: 20
+                },
+                {
+                    name: 'orange',
+                    price: 22
+                },
+                {
+                    name: 'banana',
+                    price: 15
+                },
+            ]
+
+        }
+    })
+</script>
+</body>
+</html>

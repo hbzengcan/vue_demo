@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+<template id="t1">
+    <!-- 注意：template 标签并不是一个HTML标签，我们针对变量做操作时，必须最外层包含一个根元素
+     错误写法：
+     <template id="t1">
+        <div v-for="(item,index) in stars">{{index + item}}</div>
+     </template>
+     上面的写法会直接导致for循环不会被执行，不可以在根元素上做循环操作
+     -->
+    <div>
+        <div v-for="(item,index) in stars">{{index + item}}</div>
+    </div>
+</template>
+<div id="app">
+    <!-- v-bind属性不支持驼峰命名，如果变量名为驼峰命名，使用v-bing绑定时会找不到，因为Html大小写不敏感  -->
+    <son :stars="stars"></son>
+</div>
+
+</body>
+<script type="text/javascript">
+    const son = {
+        /*写法一： props: ['stars'],*/
+
+        /*写法二：
+            props: {
+                /!* 变量名：限制变量类型 *!/
+                stars: Array
+            },
+        */
+
+        /* 写法三：*/
+        props:{
+          stars:{
+              // 变量类型：可以同时支持多种类型
+              type: [Array,String],
+              // 变量默认值，如果变量的类型为object类型，则【default】必须是一个函数
+              /*
+                  default(){
+                      return {};
+                  }
+              */
+              default: 'nothing',
+              // 作用：当前组件是否必须获取名为stars的变量，如果当前组件中未传入名为【stars】的变量，则会报错，该属性默认为false
+              required: true
+          }
+        },
+        template: "#t1"
+    };
+    const father = new Vue({
+        el: '#app',
+        data: {
+            stars: ['史泰龙', '施瓦辛格', '汤姆克鲁斯', '肯尼迪']
+        },
+        components: {
+            son: son
+        }
+    });
+</script>
+
+</html>

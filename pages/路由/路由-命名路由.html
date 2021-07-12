@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 使用命名路由进行路由跳转，【to】前面前面一定要【:】，这样vue才知道是通过动态属性进行绑定的 -->
+    <router-link :to="{name: 'user', params: {id: 123}}">user</router-link>
+    <router-link to="/register">register</router-link>
+
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript" src="../../js/vue-router.js"></script>
+<script type="text/javascript">
+    const user = {
+        props:['id'],
+        template: `<h1>user组件 {{id}}</h1>`
+    };
+    const register = {
+        template: `<h1>register组件</h1>`
+    };
+
+    /* 配置路由规则并创建路由实例 */
+    const router = new VueRouter({
+        routes: [
+            {
+                name: 'user',
+                path: '/user/:id',
+                component: user,
+                props: true
+            },
+            {
+                path: '/register',
+                component: register
+            }
+        ]
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue'
+        },
+        router
+    });
+</script>
+</body>
+</html>
